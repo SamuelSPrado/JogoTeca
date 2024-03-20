@@ -33,21 +33,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/cadastro">Cadastro</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="PAG3">PAG3</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=PAG4">PAG4</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=PAG5">PAG5</a>
-                    </li>
                 </ul>
 
-                <!-- Botões de Login e Logout -->
+                <!-- Botão de Login (abre modal) -->
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/login"><button type="button" class="btn btn-primary">Login</button></a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">Login</button>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout"><button type="button" class="btn btn-danger">Logout</button></a>
@@ -61,6 +52,35 @@
         </div>
 
         {% block conteudo %} {% endblock %}
+    </div>
+
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aqui vem o formulário de login -->
+                    <!-- Exemplo: -->
+                    <form action="/login" method="post">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts do Bootstrap -->
