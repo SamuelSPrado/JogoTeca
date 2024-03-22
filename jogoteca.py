@@ -9,12 +9,7 @@ class Jogo:
 game1 = Jogo('Tetris', 'Puzzle', 'Atari')
 game2 = Jogo('God of War', 'Ação', 'Playstation')
 game3 = Jogo('The Last of Us', 'Ação', 'Playstation')
-game4 = Jogo('Grand Theft Auto', 'Ação', 'Playstation')
-game5 = Jogo('Minecraft', 'Ação', 'Playstation')
-game6 = Jogo('The Witcher', 'Ação', 'Playstation')
-game7 = Jogo('The Legend of Zelda', 'Ação', 'Playstation')
-game8 = Jogo('Super Mario', 'Plataforma', 'Nintendo')
-lista = [game1, game2, game3, game4, game5, game6, game7, game8]
+lista = [game1, game2, game3]
 
 app = Flask(__name__)
 app.secret_key = 'key'
@@ -25,6 +20,8 @@ def index():
 
 @app.route('/cadastro')
 def cadastro():
+    if 'usuario_logado' not in session or session['usuario_logado'] == None:
+        return redirect('/login')
     return render_template('cadastro.html', titulo='New Game')
 
 @app.route('/criar', methods=['POST',])
